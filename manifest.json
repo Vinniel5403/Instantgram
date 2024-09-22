@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Instantgram",
+  "version": "1.0.1",
+  "description": "An extension that allows you to search for usernames on Instagram with just one click.",
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "windows"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "128": "icon128.png"
+  }
+}
