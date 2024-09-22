@@ -8,22 +8,20 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "searchInstagram" && info.selectionText) {
-    const query = info.selectionText.trim();
+    // ลบช่องว่างออกจาก selectionText
+    const query = info.selectionText.trim().replace(/\s+/g, '');
     const url = `https://www.instagram.com/${encodeURIComponent(query)}`;
 
     const popupWidth = 600;  
     const popupHeight = 616;  
 
-    
     chrome.windows.getCurrent({}, (currentWindow) => {
       const screenWidth = currentWindow.width;
       const screenHeight = currentWindow.height;
 
-      
       const top = Math.max(0, Math.round((screenHeight - popupHeight) / 2));
       const left = Math.max(0, Math.round((screenWidth - popupWidth) / 2));
 
-    
       chrome.windows.create({
         url: url,
         type: "popup",
